@@ -37,7 +37,7 @@ public class Vetores {
     }
     public boolean estavazio4() {
         return ocupacao == 0 ? true : false;
-        // se for = 0 retorna true, se nao, retorna 0 
+        // se for = 0 retorna true, se nao, retornaa 0 
     }
     public boolean estaCheio(){
         return ocupacao == capacidade; 
