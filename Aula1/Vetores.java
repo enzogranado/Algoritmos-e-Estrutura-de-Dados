@@ -4,12 +4,12 @@ public class Vetores {
     private int[] vetor;
     private int ocupacao;
     private int capacidade;
+    private static final int CAP_PADRAO = 4;
 
     // se o usuario nn falar nada, tamanho do array é 10
+    // sobrecarga de construtores
     public Vetores() {
-        vetor = new int[10];
-        ocupacao = 0; // por clareza
-        capacidade = 0;
+        this(CAP_PADRAO);
     }
 
     public Vetores(int capacidadeInicial) {
@@ -45,35 +45,70 @@ public class Vetores {
         return ocupacao == capacidade;
     }
 
-    public boolean adiciona(int elemento) {
-        if (estaCheio())
-            return false;
-        else {
-            vetor[ocupacao] = elemento;
-            // também podemos fazer assim: vetor[ocupacao++] = elemento;
-            // dessa forma podemos omitir a linha de ocupaççao ++
-            // colocamos a ocupação pois ela significa a ultima posição, nesse caso, a
-            // posição 0 já que
-            // nn tem nenhum elemento no array
-            ocupacao++;
-            // colocamos o ++ para garantir que o próximo elemento estará na proxima ocupação, próxima casinha
-            return true;
-        }
-    }
-    public int remove () {
-        if (estaVazio1()) return -1; // carefull
-        ocupacao--;
-        return vetor[ocupacao]; 
-        // A OCUPAÇÃO É BASICAMENTE A POSIÇÃO DO VALOR QUE SERÁ ADICIONADO OU RETIRADO
-        // NESSE CASO, A OCUPAÇÃO FOI REDUZIDA PARA "APONTAR" PARA O ELEMENTO QUE QUEREMOS RETIRAR
-        // POSTERIORMENTE RETIRAMOS ESSE ELEMENTO 
-    }
-    @Override
-    public String toString (){
-        if (estaVazio3()) return "vetor vazio";
-        String s = "";
+    private void aumentarCapacidade() {
+        var aux = new int[2 * capacidade];
+        capacidade *= 2;
         for (int i = 0; i < ocupacao; i++)
-            s += vetor[i] + " ";
-        return s; 
+            aux[i] = vetor[i];
+        vetor = aux;
+    }
+
+    private void reduzirCapacidade() {
+        var aux = new int[2 / capacidade];
+        capacidade /= 2;
+        for (int i = 0; i < ocupacao; i++) {
+            aux[i] = vetor[i];
+        }
+        vetor = aux;
+    }
+
+    public boolean adiciona(int elemento) {
+        // se esta cheio redimensiona
+        if (estaCheio())
+            this.aumentarCapacidade();
+        // adicona
+        vetor[ocupacao++] = elemento;
+        // devolve true
+        return true;
+    }
+
+    public int remove() {
+
+        if (!estaVazio3()) {
+            ocupacao = ocupacao - 1;
+            if (ocupacao <= capacidade / 4 && ocupacao>CAP_PADRAO)
+                reduzirCapacidade();
+            return vetor[ocupacao];
+        }
+        return -1;
+
+        // if (estaVazio1()) return -1; // carefull
+        // ocupacao--;
+        // return vetor[ocupacao];
+        // A OCUPAÇÃO É BASICAMENTE A POSIÇÃO DO VALOR QUE SERÁ ADICIONADO OU RETIRADO
+        // NESSE CASO, A OCUPAÇÃO FOI REDUZIDA PARA "APONTAR" PARA O ELEMENTO QUE
+        // QUEREMOS RETIRAR
+        // POSTERIORMENTE RETIRAMOS ESSE ELEMENTO
+    }
+
+    @Override
+    public String toString() {
+        // if (estaVazio3()) return "vetor vazio";
+        // String s = "";
+        // for (int i = 0; i < ocupacao; i++)
+        // s += vetor[i] + " ";
+        // return s;
+        var sb = new StringBuilder();
+        sb.append("Quantidade: ").append(ocupacao).append("\n");
+        sb.append("Capacidade: ").append(capacidade).append("\n");
+        if (!estaVazio1()) {
+            // for (int e : vetor){
+            // sb.append(e).append(" ");
+            // }
+            for (int i = 0; i < ocupacao; i++) {
+                sb.append(vetor[i]).append(" ");
+            }
+        }
+        return sb.toString();
     }
 }
