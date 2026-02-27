@@ -1,4 +1,4 @@
-package Aula1;
+
 
 public class Vetores {
     private int[] vetor;

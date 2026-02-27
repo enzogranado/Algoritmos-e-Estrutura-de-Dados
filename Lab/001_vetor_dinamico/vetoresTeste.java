@@ -1,8 +1,6 @@
-package Aula1;
 
-import java.nio.channels.Pipe.SourceChannel;
+
 import java.util.Random;
-import java.util.random.*;
 public class vetoresTeste{
     public static void main(String[]args) throws Exception{
         var nossoVetor = new Vetores();
@@ -19,15 +17,12 @@ public class vetoresTeste{
             switch (ehParaAdicionar) {
                 case 1:
                     nossoVetor.adiciona(numeroAleatorio);
-                    System.out.println("Adicionando... " + numeroAleatorio);
+                    System.out.println("Adicionando... ");
                     break;
             
                 case 2:
                     nossoVetor.remove();
-                    break;
-                
-                case 3:
-                    System.out.println(nossoVetor);
+                    System.out.println("Removendo.. ");
                     break;
             }
 
