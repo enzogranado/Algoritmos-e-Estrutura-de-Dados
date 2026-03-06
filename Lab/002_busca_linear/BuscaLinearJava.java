@@ -29,17 +29,16 @@ public class BuscaLinearJava {
         // System.out.println(resultado != -1 ? "Encontrou" : "Não Encontrou");
 
 
-
-
+        
         // preencher um vetor de 10 posições com valores entre 1 a 10
         int[] vetor = new int[10];
         var gerador = new Random();
         for (int i=0; i<10; i++){
-            int numeroAleatorio = gerador.nextInt(1,11);
+            int numeroAleatorio = gerador.nextInt(10) + 1 ;
             vetor[i]=numeroAleatorio;
         }
         // sortear um valor a ser buscado
-        int valorBuscado = gerador.nextInt(1,11);
+        int valorBuscado = gerador.nextInt(10) + 1;
         System.out.println("O valor que estamos buscando é: " + valorBuscado);
         // fazer a busca
        var resultado = buscaLinear(vetor, valorBuscado);

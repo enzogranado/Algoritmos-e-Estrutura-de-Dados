@@ -1,5 +1,4 @@
 
-
 import java.util.Random;
 public class vetoresTeste{
     public static void main(String[]args) throws Exception{
