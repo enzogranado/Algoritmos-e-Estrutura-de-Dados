@@ -21,7 +21,7 @@ public class ListaLigada{
         if(estaVazia()) primeiro = novo;
         else {
             No runner = primeiro;
-            while(runner.getProximo() != null)
+            while(runner.getProximo() != null) // percorre até o ultimo
                 runner = runner.getProximo();
             runner.setProximo(novo);
         } 
@@ -32,6 +32,37 @@ public class ListaLigada{
         int temp = primeiro.getInfo(); // variavel temporaria do primeiro elemento
         primeiro = primeiro.getProximo(); // aqui pegamos o endereço do segundo
         return temp; 
+    }
+
+    public int removeFim(){
+        // teste de vaZIO fica para a aplicação
+        // cenário 1: Lista tem um único elemento
+        int temp; // variavel temporária
+        if (primeiro.getProximo() == null){
+            temp = primeiro.getInfo();
+            primeiro = null;
+        } else{
+            // cenário 2: A lista tem pelo menos 2 elementos
+            No runner = primeiro;
+            while (runner.getProximo().getProximo() != null) { // percorrendo até o penultimo
+                runner = runner.getProximo();
+            }
+            temp = runner.getProximo().getInfo(); // aqui eu olhei para o penultimo, fui até o ultimo e peguei a info dele (o numero)
+            runner.setProximo(null);
+        }
+        return temp;
+    }
+
+    public int recebeIndex(int index){
+        if (index<=0) return -1;
+        int pos_atual = 1;
+        No runner = primeiro;
+        while (runner!= null && pos_atual<index) {
+            pos_atual ++;
+            runner = runner.getProximo();
+        } if (runner == null) // index maior que o tamanho, ele roudou a lista té nn ter mais nenhum (nulo)
+            return -1;
+        return runner.getInfo(); // achei a posição
     }
 
     @Override

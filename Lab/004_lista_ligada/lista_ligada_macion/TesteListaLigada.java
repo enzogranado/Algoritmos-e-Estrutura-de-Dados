@@ -18,5 +18,11 @@ public class TesteListaLigada {
         ll.insereFim(300);
         System.out.println("lista depois das adições no fim");
         System.out.println(ll);
+        if (ll.estaVazia())
+            System.out.println("lista vazia, não há o que remover");
+        else {
+            System.out.println(ll.removeFim() + " foi removida do final");
+            System.out.println(ll);
+        }
     }
 }
