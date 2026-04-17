@@ -1,3 +1,4 @@
+package AlgoritmosEstudos.ExercíciosNossoVetor;
 
 import java.util.Random;
 public class vetoresTeste{

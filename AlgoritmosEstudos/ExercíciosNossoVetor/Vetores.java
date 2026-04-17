@@ -1,3 +1,4 @@
+package AlgoritmosEstudos.ExercíciosNossoVetor;
 
 
 public class Vetores {
@@ -72,6 +73,8 @@ public class Vetores {
         return true;
     }
 
+    
+
     public int remove() {
 
         if (!estaVazio3()) {
@@ -90,6 +93,8 @@ public class Vetores {
         // QUEREMOS RETIRAR
         // POSTERIORMENTE RETIRAMOS ESSE ELEMENTO
     }
+
+    
 
     @Override
     public String toString() {

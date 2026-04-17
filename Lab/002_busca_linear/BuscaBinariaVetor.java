@@ -2,7 +2,7 @@ import java.util.Arrays;
 public class BuscaBinariaVetor {
 
 
-    public static int buscaBinaria(int [] vetor, int valor){
+    public static int buscaBinaria(int [] vetor, int valor){        
         int inicio =0 , fim = vetor.length -1;
 
         while(inicio<= fim){
@@ -42,7 +42,7 @@ public class BuscaBinariaVetor {
         System.out.println("Depois da ordenação");
         Arrays.sort(numeros);
         System.out.println(Arrays.toString(numeros));
-        int valor = 3;
+        int valor = 11;
         var indice = buscaBinaria(numeros, valor);
         System.out.printf("%s\n", indice < 0 ? "Não encontrado" : " Encontrado em " + indice);
         
